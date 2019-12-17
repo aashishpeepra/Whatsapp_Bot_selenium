@@ -38,9 +38,7 @@ def texter():
         lane.send_keys(typo)
         lane.send_keys(Keys.RETURN)
         i=i+1
-##//*[@id="main"]/div[2]/div/div/div[3]/div[18]/div/div/div[1]/div/span   _2S1VP copyable-text selectable-text
-##_2S1VP copyable-text selectable-text       //*[@id="side"]/header/div[1]/div/div
-        ##selectable-text invisible-space copyable-text //*[@id="main"]/div[2]/div/div/div[3]/div[16]/div/div/div[1]/div
+
 def reader():
     args=driver.find_element_by_class_name('selectable-text invisible-space copyable-text')
     print(args.text)
@@ -148,7 +146,7 @@ def forwarder():
         actual_exe()
     list_print()
     ex_forwarder()
-##---------------------------------------------------------------------------- //*[@id="main"]/div[2]/div/div/div[3]/div[22]/div
+##---------------------------------------------------------------
 ##Actual starts here
 def multiple_sender():
     try:
