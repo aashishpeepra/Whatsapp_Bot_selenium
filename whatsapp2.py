@@ -25,8 +25,33 @@ input("After Scanning press any key to continue")
 def name_input():
     ##take name input
     user_name=input("WHOM DO YOU WANT TO SEND MESSAGE")
-    chat=driver.find_element_by_xpath('//span[text()="%s"]'%(user_name))
-    chat.click()
+    # //*[@id="side"]/div[1]/div/label/div/div[2]
+    chatInput=driver.find_element_by_xpath('//*[@id="side"]/div[1]/div/label/div/div[2]')
+    chatInput.click()
+    chatInput.send_keys(user_name)
+    ##pane-side > div:nth-child(1) > div > div > div:nth-child(4) > div > div > div._2kHpK > div._3dtfX > div._3CneP > div > span > span
+    # //*[@id="pane-side"]/div[1]/div/div/div[5]/div/div/div[2]/div[1]/div[1]/span/span
+    # elems= driver.find_element_by_class_name('matched-text _3Whw5')
+    # child=driver.find_element_by_css_selector("span.matched-text")
+    # child.click
+    # child=driver.find_element_by_xpath('//*[@id="pane-side"]/div[1]/div/div/div[1]/div/div/div[2]/div[1]/div[1]')
+    child = driver.find_elements_by_class_name('matched-text')
+    print(child)
+    print("Select by entering the index")
+    if len(child)==0:
+        print("No match found! Try again")
+        name_input()
+    for i in range(len(child)):
+        print(str(i+1)+".",child[i].text)
+    index=int(input("Enter Inidex : "))
+    if index >=1 and index<=len(child):
+        child[index-1].click() 
+    else:
+        print("Wrong Index Selected Try again")
+        name_input()
+    # print(elems)
+    # elems.click()
+    # chat.click()
 
 ##TEXT LANE
 def texter():
@@ -157,7 +182,8 @@ def multiple_sender():
             choice=format_checker("press 1 to exit")
             if choice==1:
                 actual_exe()
-    except:
+    except Exception as e:
+        print(e)
         print("error in multiple sender")
         print("RECALLING")
         multiple_sender()
